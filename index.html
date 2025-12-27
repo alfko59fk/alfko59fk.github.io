@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Thank you</title>
+</head>
+<body>
+    <div id="content"></div>
+    <script>
+        const urlParams = new URLSearchParams(window.location.search);
+        const contentUrl = window.location.search.substring(1); // Get URL after ?
+        
+        if (contentUrl) {
+            fetch(contentUrl)
+                .then(response => response.text())
+                .then(html => {
+                    document.body.innerHTML = html;
+                })
+                .catch(error => console.error('Error loading content:', error));
+        }
+    </script>
+</body>
+</html>
